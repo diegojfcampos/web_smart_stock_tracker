@@ -1,0 +1,26 @@
+body{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    float: auto;
+    position: relative;
+}
+
+
+footer{
+    background: #333;
+    color: #9d9d9d;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+
+
+.container-fluid{
+    color: #333;
+    height: 75px;
+    line-height: 75px;
+    padding-top: 12px;
+}
+
