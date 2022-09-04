@@ -12,6 +12,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/signin.css">
     <script src="/css/style.css"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/signup.js" defer></script>
+
     <title>Smart Stock Track</title>
 </head>    
 <body>
@@ -27,19 +30,19 @@
     </div>
   </nav>
 
-  <form action="action_page.php" method="post">
+  <form>
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
+      <input id = "userEmail" type="text" placeholder="Enter Username" name="uname" required>
   
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input id = "userPassword" type="password" placeholder="Enter Password" name="psw" required>
 
       <label for="psw"><b>Confirm Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input id= "userCheckpassword" type="password" placeholder="Enter Password" name="psw" required>
   
-      <button type="submit">Register</button>
+      <button id="btnRegister" type="submit">Register</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
@@ -48,16 +51,13 @@
   
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw"><a href="/html/signin.html">Sign In</a><hr></span>
+      <span class="psw"><a href="/html/signup.html">Sign Up</a><hr></span>
     </div>
   </form>
 
   <footer>Copright &copy; </footer>
 
-
-
-
-  <script src="/js/index.js"> </script>
+ 
 
 </body>
 </html>
