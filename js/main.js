@@ -1,10 +1,11 @@
-//Imports
-axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token
+
+axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
+
 axios.defaults.baseURL = "http://localhost:8000";
 
 //Main Table
-const urlUSD = "http://localhost:8000/getcryptos/usd";
-const urlFilteredBTC = "http://localhost:8000/getcryptos/btcfilter";
+const urlUSD = "/getcryptos/usd";
+const urlFilteredBTC = "/getcryptos/btcfilter";
 
 function getCryptos(){
     axios.get(urlApiCoinGeck)
@@ -53,8 +54,28 @@ btnRegister.addEventListener('click', function(){
         url: "/userauth/register",
         data: newUser
     }).then((response) => {
-        cancelIdleCallback(response.data)
+        callback(console.log(response.data))
     }).catch({message: error.stack})  
-  
-
 })
+
+const btnLogin = document.getElementById("btnLogin");
+
+btnLogin.addEventListener('click', function(){    
+    const emailLogin = document.getElementById(emailLogin)
+    const passwordLogin = document.getElementById(passwordLogin)
+
+    const userLogin = {
+        email: emailLogin.value,
+        password: passwordLogin.value,
+    }   
+    console.log("Debug")
+    axios({
+        method: "post",
+        url: "/userauth/login",
+        data: userLogin
+    }).then((response) =>{
+        callback(response.data)
+    }).catch({message: error.stack})
+})
+
+
