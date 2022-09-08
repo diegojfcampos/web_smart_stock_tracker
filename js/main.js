@@ -1,6 +1,5 @@
 
 axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
-
 axios.defaults.baseURL = "http://localhost:8000";
 
 //Main Table
@@ -18,7 +17,7 @@ function getCryptos(){
             console.log(data);
             console.log(data[0].id);
 
-            currencyTable.textContent = JSON.stringify(data);
+           JSON.stringify(data);
             
         })
         .catch(error => console.log(error))
@@ -28,54 +27,49 @@ function getFilteredBtc(){
     axios.get(urlFilteredBTC)
     .then(response =>{
         const filteredBTC = response.data;
-        currencyTable.textContent = JSON.stringify(filteredBTC);
+        JSON.stringify(filteredBTC)
+        return filteredBTC;
 
     })
     .catch(error => console.log(error))
 }
 getFilteredBtc();
 
-//SignUP - Register
+//Creating Table
 
-const btnRegister = document.querySelector("#btnRegister");
+let currencyTable = document.getElementById("currencyTable");
 
-btnRegister.addEventListener('click', function(){  
-    const userEmail= document.querySelector("#userEmail")
-    const userPassword= document.querySelector("#userPassword")
-    const userCheckpassword= document.querySelector("#userCheckpassword")
+function addElement(element){
+    return document.createElement(element)
+}
 
-    const newUser = {
-        email: userEmail.value,
-        password: userPassword.value,
-        checkpassword: userCheckpassword.value
+let thead = addElement("thead");
+let tbody = addElement("tbody");
+currencyTable.appendChild(thead);
+currencyTable.appendChild(tbody);
+
+let headList = [" Rank ", " Coin ", " Price ", " 24 Change ", " Market Cap ", " Volume"];
+let rowHead = addElement("tr");
+
+for(var head = 0; head <= headList.length; head++){
+    let th = addElement("th");
+    th.textContent = headList[head];
+    rowHead.appendChild(th);
+}
+thead.appendChild(rowHead);
+
+let currencyData = getFilteredBtc();
+console.log(JSON.stringify(currencyData));
+console.log(typeof(currencyData));
+
+for (let body = 0; body <= currencyData.length; row++){
+    bodyRow = addElement("tr")
+    
+    for(let cel = 0; cel <= currencyData[body]; cel++){
+        bodyCel = addElement("td")
+        contentCel = currencyData[row][cel];
+        bodyRow.appendChild(bodyCel, contentCel);        
     }
-    axios({
-        method: "post",
-        url: "/userauth/register",
-        data: newUser
-    }).then((response) => {
-        callback(console.log(response.data))
-    }).catch({message: error.stack})  
-})
-
-const btnLogin = document.getElementById("btnLogin");
-
-btnLogin.addEventListener('click', function(){    
-    const emailLogin = document.getElementById(emailLogin)
-    const passwordLogin = document.getElementById(passwordLogin)
-
-    const userLogin = {
-        email: emailLogin.value,
-        password: passwordLogin.value,
-    }   
-    console.log("Debug")
-    axios({
-        method: "post",
-        url: "/userauth/login",
-        data: userLogin
-    }).then((response) =>{
-        callback(response.data)
-    }).catch({message: error.stack})
-})
-
+    tbody.appendChild(bodyRow);
+}
 
