@@ -3,35 +3,45 @@ axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
 axios.defaults.baseURL = "http://localhost:8000";
 
 //Main Table
-const urlUSD = "/getcryptos/usd";
-const urlFilteredBTC = "/getcryptos/btcfilter";
 
-function getCoinUSD(){
+let select = document.getElementById("currencyChoice")
+getCurrency(select.options[select.selectedIndex].value)
+
+select.addEventListener('change', function(){
+    let choice = select.options[select.selectedIndex].value;
+    getCurrency(choice)
+})
+
+function getCurrency(userChoice){
+    const urlUSD = "/getcryptos/usd";
+    const urlEUR = "/getcryptos/eur";
+    const urlBTC = "/getcryptos/btc";
+
+    console.log(userChoice);
+    
+    if(userChoice === "USD"){
+        getCoinCurrency(urlUSD)
+    }else if(userChoice === "EUR"){
+        getCoinCurrency(urlEUR)
+    }else if(userChoice === "BTC"){
+        getCoinCurrency(urlBTC)
+    }   
+}
+
+function getCoinCurrency(URL){
     axios({
         method: "get",
-        url: "/getcryptos/usd"        
+        url: URL,       
     }).then(response => {
         let data = response.data;
         createMainTable(data);
-    }).catch({message: error.stack});
+    }).catch((error) => {console.log(error)});
 }
-
-/** 
-let getfilteredBtc = () => {
-        axios.get(urlFilteredBTC)
-        .then(response => {
-            callback(const data = response.data);           
-            createMainTable(data)      
-        }).catch(error => console.log(error))
-        
-} 
-*/
 
 function createCel(tag, text){
 
-    if( tag == "IMG"){
-        var img = document.createElement("IMG");
-        console.log("Checking IMG  " + text)
+    if( tag == "img"){
+        var img = document.createElement("IMG");        
         img.src = text;
         img.style.width = "30px";
         img.style.height = "30px";
@@ -59,18 +69,10 @@ function createMainTable(data){
         rowHead.appendChild(th);
     }
     thead.appendChild(rowHead);
-    currencyTable.appendChild(thead);
-    
-    /**console.log(data)
-    console.log(typeof(data))    
-    console.log(data.toString([0]))
-    */
+    currencyTable.appendChild(thead);    
 
     for (let body = 0; body < data.length; body++){
         let bodyRow = document.createElement("tr");
-        console.log("In the body")
-        
-        console.log(data)
         let bodyRank = createCel("td", data[body].market_cap_rank);
         let bodyImg = createCel("img", data[body].image); 
         let bodyName = createCel("td", data[body].name); 
@@ -93,6 +95,3 @@ function createMainTable(data){
     currencyTable.appendChild(tbody);
 }
 
-
-//getfilteredBtc();
-getCoinUSD();
