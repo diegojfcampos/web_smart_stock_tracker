@@ -1,5 +1,5 @@
 
-body{
+body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     float: auto;
@@ -8,7 +8,7 @@ body{
     
 }
 
-footer{
+footer {
     background: #222;
     color: #9d9d9d;
     text-align: center;
@@ -31,6 +31,16 @@ footer{
     padding-top: 12px;
 }
 
+#chart_div{   
+
+    
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
+#walletInput {
+    flex-direction: column;
+}

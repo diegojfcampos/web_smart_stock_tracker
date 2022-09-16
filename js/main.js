@@ -1,6 +1,6 @@
 
 axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "http://localhost:8000/api";
 
 //Main Table
 

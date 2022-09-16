@@ -7,12 +7,14 @@
     <meta name="keywords" content="Investiments, Market, Crypto, CryptoCurrency, Currency, Stock">
     <meta name="description" content="Smart tool tracking stock investiments">
     <link rel="stylesheet" href="../css/style.css">
+   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="../css/style.css"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../js/main.js" defer></script>
+    <script src="../js/portfolio.js" defer></script>
+
 
     <title>Smart Stock Track</title>
 </head>    
@@ -23,28 +25,47 @@
         <a class="navbar-brand" href="index.html">Smart Stock Tracker</a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/html/portfolio.html"><span class="glyphicon glyphicon-star-empty"></span> Portfolio</a></li>
         <li><a href="/html/signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         <li><a href="/html/signin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </nav>
-
+  
   <div class="container" type="">
-    <select id="currencyChoice">
-      <option value="USD" selected="USD">USD</option>
-      <option value="EUR">EUR</option>
-      <option value="BTC">BTC</option>
-    </select>
-    <table id="currencyTable" class="table" >
+    <div id="chart_div"></div> 
 
-    </table> 
+    <form id="walletInput">
+      <label for="currency">Currency</label><br>
+      <select id="stockCurrency" name="currency">
+        <option value="USD" selected>USD</option>
+        <option value="EUR">EUR</option>
+        <option value="BTC">BTC</option>
+      </select><hr>
 
+      <label for="stockoption">Crypto</label><br>
+      <select id="chooseStock" name="stockoption"></select><hr>
       
-    </div>
+      <label for="price">Price</label><br>
+      <input id="stockPrice" name="price" type="number" required></input><hr>
+
+      <label for="amount">Amount</label><br>
+      <input id="stockAmount" name="amount" type="number" required></input><hr>
+
+      <label for="taxes">Tax </label><br>
+      <input id="stockTax" name="taxes" type="number" ></input><hr>
+
+      <label for="date">Date</label><br>
+      <input id="stockDate" name="date" type="date" required></input><hr>
+      
+      <button id="stockinsert" name="buy">Insert</input><hr>
+      </form>
+
   </div>
   <hr>
   <footer>Copright &copy; </footer>
-  
+
 </body>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript"></script>
+
 </html>
