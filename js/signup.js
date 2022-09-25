@@ -22,8 +22,8 @@ function userRegister(){
         url: "/userauth/register",
         data: newUser
     }).then((response) => {
-        callback(console.log(response.data))
-    }).catch({message: error.stack})  
+        console.log(response.data)
+    }).catch((error) => {console.log(error)});
 }
 
 /** 

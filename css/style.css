@@ -32,15 +32,42 @@ footer {
 }
 
 #chart_div{   
-
     
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: right;
+    width: calc(100% - 100px);
+    padding-left: 100px;
 }
 
 
 
 #walletInput {
-    flex-direction: column;
+    display: grid;
+    margin-bottom: 10px;
+    width: calc(100% - 100px);
+    
+    
+}
+
+.card {
+    
+    display:inline-flex;
+    width: calc(100% - 100px);
+    margin: 15px;
+    padding-left: 100px;
+    
+
+    
+}
+
+.container {
+    
+    width: 100%;
+    
+}
+
+button {
+    margin-right: 15px;
+    
 }

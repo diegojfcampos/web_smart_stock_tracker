@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/css/signin.css">
-    <script src="/css/style.css"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/signin.js" defer></script>
 
@@ -30,27 +30,26 @@
     </div>
   </nav>
 
-  <form>
 
     <div class="container">
       <label for="uname"><b>Username</b></label>
       <input id = "emailLogin" type="text" placeholder="Enter Username" name="uname" required>
   
-      <label for="psw"><b>Password</b></label>
-      <input id="passwordLogin" type="password" placeholder="Enter Password" name="psw" required>
+      <label for="passwordLogin"><b>Password</b></label>
+      <input id="passwordLogin" type="password" placeholder="Enter Password" name="passwordLogin" required>
   
-      <button id="btnLogin" type="submit">Login</button>
+      <button id="btnLogin" type="button">Login</button>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>
     </div>
   
     <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="button" id="cancelbtn">Cancel</button>
       <span class="psw">Forgot <a href="#">password?</a><hr></span>
       <hr>
     </div>
-  </form>
+
 
   <footer>Copright &copy; </footer>
 </body>

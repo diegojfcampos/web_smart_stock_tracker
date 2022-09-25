@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="../css/style.css"></script>
+   
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/portfolio.js" defer></script>
 
@@ -31,36 +31,46 @@
     </div>
   </nav>
   
-  <div class="container" type="">
-    <div id="chart_div"></div> 
+  <div class="container" type="">    
+    <div class="card">
+      <div id="walletInput">
+        <label for="currency">Currency</label>
+        <select id="stockCurrency" name="currency">
+          <option value="USD" selected>USD</option>
+          <option value="EUR">EUR</option>
+          <option value="BTC">BTC</option>
+        </select>
 
-    <form id="walletInput">
-      <label for="currency">Currency</label><br>
-      <select id="stockCurrency" name="currency">
-        <option value="USD" selected>USD</option>
-        <option value="EUR">EUR</option>
-        <option value="BTC">BTC</option>
-      </select><hr>
+        <label for="stockoption">Crypto</label>
+        <select id="chooseStock" name="stockoption"></select>
+        
+        <label for="price">Price</label>
+        <input id="stockPrice" name="price" type="number" required></input>
 
-      <label for="stockoption">Crypto</label><br>
-      <select id="chooseStock" name="stockoption"></select><hr>
+        <label for="amount">Amount</label>
+        <input id="stockAmount" name="amount" type="number" required></input>
+
+        <label for="taxes">Tax </label>
+        <input id="stockTax" name="taxes" type="number" ></input>
+
+        <label for="date">Date</label>
+        <input id="stockDate" name="date" type="date" required></input><br>
+        
+        <div class="buttons">
+          <button id="stockinsert" style="margin-right: 15px;" name="buy">Insert</input>
+          <button id="stockdelet" name="sell">Delete</input>
+        </div>
+     
+      </div>
+
+      <div id="chart_div"></div>
+
       
-      <label for="price">Price</label><br>
-      <input id="stockPrice" name="price" type="number" required></input><hr>
+    </div>
 
-      <label for="amount">Amount</label><br>
-      <input id="stockAmount" name="amount" type="number" required></input><hr>
-
-      <label for="taxes">Tax </label><br>
-      <input id="stockTax" name="taxes" type="number" ></input><hr>
-
-      <label for="date">Date</label><br>
-      <input id="stockDate" name="date" type="date" required></input><hr>
       
-      <button id="stockinsert" name="buy">Insert</input><hr>
-      </form>
-
-  </div>
+  </div> 
+      
   <hr>
   <footer>Copright &copy; </footer>
 

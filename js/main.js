@@ -34,6 +34,7 @@ function getCoinCurrency(URL){
         url: URL,       
     }).then(response => {
         let data = response.data;
+        console.log(data)
         createMainTable(data);
     }).catch((error) => {console.log(error)});
 }
@@ -55,7 +56,7 @@ function createCel(tag, text){
 
 //Creating Table
 function createMainTable(data){
-
+    document.getElementById("currencyTable").innerHTML="";
     let currencyTable = document.getElementById("currencyTable");
     let thead = document.createElement("thead");
     let tbody = document.createElement("tbody");
