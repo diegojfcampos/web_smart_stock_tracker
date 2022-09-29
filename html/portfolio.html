@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="Investiments, Market, Crypto, CryptoCurrency, Currency, Stock">
     <meta name="description" content="Smart tool tracking stock investiments">
-    <link rel="stylesheet" href="../css/style.css">
-   
+    <link rel="stylesheet" href="../css/style.css">   
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/portfolio.js" defer></script>
 
@@ -22,11 +20,12 @@
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">Smart Stock Tracker</a>
+        <a class="navbar-brand" href="home.html">Smart Stock Tracker</a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="/html/signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="/html/signin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li id="portfolioMenu"><a href="/html/portfolio.html"><span class="glyphicon glyphicon-star-empty"></span> Portfolio</a></li>        
+        <li><a href=""><span class="glyphicon glyphicon-cog"></span> Options</a></li>
+        <li id="portfolioLogout"><a href="/html/index.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
   </nav>

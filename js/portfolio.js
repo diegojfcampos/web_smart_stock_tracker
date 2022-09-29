@@ -62,4 +62,14 @@ document.getElementById("stockDate").value = date;
   }
 
   drawChart();
+
+  let logout = document.getElementById(portfolioLogout)
+
+  logout.addEventListener("change", doLogout);
+
+  function doLogout (){
+    localStorage.token = "";
+    localStorage.id = "";
+    location.href = "index.html";
+  }
  

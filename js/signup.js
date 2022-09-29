@@ -13,8 +13,8 @@ function userRegister(){
     const userCheckpassword= document.querySelector("#userCheckpassword")
 
     const newUser = {
-        email: userEmail.value,
-        password: userPassword.value,
+        email: userEmail.value.trim(),
+        password: userPassword.value.trim(),
         checkpassword: userCheckpassword.value
     }
     axios({
@@ -26,12 +26,9 @@ function userRegister(){
     }).catch((error) => {console.log(error)});
 }
 
-/** 
-function signup(){   
-    axios.post(signupRoute, newUser)
-    .then(response => {
-                alert(JSON.stringify(response.data))
-    }).catch(error => console.log(error))
-    
+let cancelBtn = document.getElementById("cancelSignup");
+cancelBtn.addEventListener("click", refreshPage)
+
+function refreshPage(){
+    location.href = "signup.html"
 }
-*/
