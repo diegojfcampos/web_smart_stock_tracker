@@ -61,7 +61,7 @@ function createMainTable(data){
     let thead = document.createElement("thead");
     let tbody = document.createElement("tbody");
  
-    let headList = [" Rank ", " " ," Coin ", " Price ", " 24 Change ", " Market Cap ", " Volume"];
+    let headList = [" Rank ", " " ," Coin ", " Price ", "24h Change(%) ", " Market Cap ", " Volume"];
     let rowHead = document.createElement("tr");
 
     for(var head = 0; head <= headList.length; head++){
@@ -77,10 +77,14 @@ function createMainTable(data){
         let bodyRank = createCel("td", data[body].market_cap_rank);
         let bodyImg = createCel("img", data[body].image); 
         let bodyName = createCel("td", data[body].name); 
-        let bodyPrice = createCel("td", data[body].current_price);   
-        let bodyChange = createCel("td", data[body].market_cap_change_24h);   
-        let bodyCap = createCel("td", data[body].market_cap);   
-        let bodyVolume = createCel("td", data[body].total_volume);                         
+        let formatPrice = data[body].current_price;   
+        let bodyPrice = createCel("td", formatPrice.toLocaleString('en-US', { style: 'currency', currency: 'USD' }));
+        let formatChange = data[body]. price_change_percentage_24h;
+        let bodyChange = createCel("td", formatChange.toLocaleString('en-US',{minimumFractionDigits: 2}));  
+        let formatCap = data[body].market_cap;
+        let bodyCap = createCel("td", formatCap.toLocaleString('en-US', { style: 'currency', currency: 'USD' }));  
+        let finalVolume =  data[body].total_volume;
+        let bodyVolume = createCel("td", finalVolume.toLocaleString('en-US', { style: 'currency', currency: 'USD' }));                      
            
         bodyRow.appendChild(bodyRank);
         bodyRow.appendChild(bodyImg);

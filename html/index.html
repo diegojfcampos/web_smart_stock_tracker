@@ -16,32 +16,33 @@
     <title>Smart Stock Track</title>
 </head>    
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.html">Smart Stock Tracker</a>
+  <header>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">Smart Stock Tracker</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">        
+          <li><a href="/html/signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="/html/signin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          
+        </ul>
       </div>
-      <ul class="nav navbar-nav navbar-right">        
-        <li><a href="/html/signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="/html/signin.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        
-      </ul>
+    </nav>
+  </header>
+  <main>
+    <div class="container" type="">
+      <select id="currencyChoice">
+        <option value="USD" selected="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="BTC">BTC</option>
+      </select>
+
+      <table id="currencyTable" class="table" ></table>       
+      </div>
     </div>
-  </nav>
-
-  <div class="container" type="">
-    <select id="currencyChoice">
-      <option value="USD" selected="USD">USD</option>
-      <option value="EUR">EUR</option>
-      <option value="BTC">BTC</option>
-    </select>
-
-    <table id="currencyTable" class="table" ></table> 
-
-      
-    </div>
-  </div>
-  <hr>
+    <hr>
+  </main>
   <footer>Copright &copy; </footer>
   
 </body>

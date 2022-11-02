@@ -12,68 +12,77 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/portfolio.js" defer></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
     <title>Smart Stock Track</title>
 </head>    
 <body>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="home.html">Smart Stock Tracker</a>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li id="portfolioMenu"><a href="/html/portfolio.html"><span class="glyphicon glyphicon-star-empty"></span> Portfolio</a></li>        
-        <li><a href=""><span class="glyphicon glyphicon-cog"></span> Options</a></li>
-        <li id="portfolioLogout"><a href="/html/index.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-      </ul>
-    </div>
-  </nav>
-  
-  <div class="container" type="">    
-    <div class="card">
-      <div id="walletInput">
-        <label for="currency">Currency</label>
-        <select id="stockCurrency" name="currency">
-          <option value="USD" selected>USD</option>
-          <option value="EUR">EUR</option>
-          <option value="BTC">BTC</option>
-        </select>
-
-        <label for="stockoption">Crypto</label>
-        <select id="chooseStock" name="stockoption"></select>
-        
-        <label for="price">Price</label>
-        <input id="stockPrice" name="price" type="number" required></input>
-
-        <label for="amount">Amount</label>
-        <input id="stockAmount" name="amount" type="number" required></input>
-
-        <label for="taxes">Tax </label>
-        <input id="stockTax" name="taxes" type="number" ></input>
-
-        <label for="date">Date</label>
-        <input id="stockDate" name="date" type="date" required></input><br>
-        
-        <div class="buttons">
-          <button id="stockinsert" style="margin-right: 15px;" name="buy">Insert</input>
-          <button id="stockdelet" name="sell">Delete</input>
+  <header>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="home.html">Smart Stock Tracker</a>
         </div>
-     
+        <ul class="nav navbar-nav navbar-right">
+          <li id="portfolioMenu"><a href="/html/portfolio.html"><span class="glyphicon glyphicon-star-empty"></span> Portfolio</a></li>        
+          <li><a href=""><span class="glyphicon glyphicon-cog"></span> Options</a></li>
+          <li id="portfolioLogout"><a href="/html/index.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </ul>
       </div>
+    </nav>
+</header>
+<main>
+  <section class="portfolioSection">    
+      <div id="currentAmount"> DIV 1 TEST</div>
+      <div id="totalInvested">DIV 2 TEST</div>
+      <div id="totalTaxes">DIV 3 TEST</div>
+      <div id="resultSpot">DIV 4 TEST</div>
+      <div id="totalStackeing">DIV 5 TEST</div>
+      <div id="totalEarnedStacking">DIV 6 TEST</div>
+      <div ><button id="btnShowModal">Insert Stock</button></div>
+  </section>
 
-      <div id="chart_div"></div>
+  <section class="secLineChat">
+    <div id="lineChart"></div>
+  </section>
 
-      
+  </main>   
+
+  <div class="modal-conteiner" id="modal-conteiner">
+    <div class="modal-content">
+      <button id="close">x</button>
+      <h1>Insert Stock</h1>
+      <form>      
+        <label for="currency">Currency</label>
+          <select id="stockCurrency" name="currency">
+            <option value="USD" selected>USD</option>
+            <option value="EUR">EUR</option>
+            <option value="BTC">BTC</option>
+          </select>
+
+          <label for="stockoption">Crypto</label>
+          <select id="chooseStock" name="stockoption"></select>
+            
+          <label for="price">Price</label>
+          <input id="stockPrice" name="price" type="number" required></input>
+
+          <label for="amount">Amount</label>
+          <input id="stockAmount" name="amount" type="number" required></input>
+
+          <label for="taxes">Tax </label>
+          <input id="stockTax" name="taxes" type="number" ></input>
+
+          <label for="date">Date</label>
+          <input id="stockDate" name="date" type="date" required></input><br>          
+        </form>
+        <button id="stockinsert"   name="buy">INSERT</input></button>
     </div>
-
-      
-  </div> 
-      
+  </div>
   <hr>
   <footer>Copright &copy; </footer>
 
-</body>
+  </body>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript"></script>
 
