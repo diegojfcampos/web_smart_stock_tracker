@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Investiments, Market, Crypto, CryptoCurrency, Currency, Stock">
-    <meta name="description" content="Smart tool tracking stock investiments">
-    <link rel="stylesheet" href="../css/style.css">   
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>   
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="../js/portfolio.js" defer></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="Investiments, Market, Crypto, CryptoCurrency, Currency, Stock">
+  <meta name="description" content="Smart tool tracking stock investiments">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../js/portfolio.js" defer></script>
 
+  <title>Smart Stock Track</title>
+</head>
 
-    <title>Smart Stock Track</title>
-</head>    
 <body>
   <header>
     <nav class="navbar navbar-inverse">
@@ -25,65 +25,73 @@
           <a class="navbar-brand" href="home.html">Smart Stock Tracker</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li id="portfolioMenu"><a href="/html/portfolio.html"><span class="glyphicon glyphicon-star-empty"></span> Portfolio</a></li>        
+          <li id="portfolioMenu"><a href="/html/portfolio.html"><span class="glyphicon glyphicon-star-empty"></span>
+              Portfolio</a></li>
           <li><a href=""><span class="glyphicon glyphicon-cog"></span> Options</a></li>
-          <li id="portfolioLogout"><a href="/html/index.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li id="portfolioLogout"><a href="/index.html"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+          </li>
         </ul>
       </div>
     </nav>
-</header>
-<main>
-  <section class="portfolioSection">    
+  </header>
+  <main>
+    <section class="portfolioSection">
       <div id="currentAmount"> DIV 1 TEST</div>
       <div id="totalInvested">DIV 2 TEST</div>
       <div id="totalTaxes">DIV 3 TEST</div>
       <div id="resultSpot">DIV 4 TEST</div>
       <div id="totalStackeing">DIV 5 TEST</div>
       <div id="totalEarnedStacking">DIV 6 TEST</div>
-      <div ><button id="btnShowModal">Insert Stock</button></div>
-  </section>
+      <div><button id="btnShowModal">Insert Stock</button></div>
+    </section>
 
-  <section class="secLineChat">
-    <div id="lineChart"></div>
-  </section>
+    <div >
+      <canvas id="lineChart"  height="100px"></canvas>
+    </div>
 
-  </main>   
+    <h2>Stock Wallet</h2>
+    <section class="homeTable">
+      <table id="walletTable" class="table"></table>
+    </section>
+
+
+  </main>
 
   <div class="modal-conteiner" id="modal-conteiner">
     <div class="modal-content">
       <button id="close">x</button>
       <h1>Insert Stock</h1>
-      <form>      
+      <form>
         <label for="currency">Currency</label>
-          <select id="stockCurrency" name="currency">
-            <option value="USD" selected>USD</option>
-            <option value="EUR">EUR</option>
-            <option value="BTC">BTC</option>
-          </select>
+        <select id="stockCurrency" name="currency">
+          <option value="USD" selected>USD</option>
+          <option value="EUR">EUR</option>
+          <option value="BTC">BTC</option>
+        </select>
 
-          <label for="stockoption">Crypto</label>
-          <select id="chooseStock" name="stockoption"></select>
-            
-          <label for="price">Price</label>
-          <input id="stockPrice" name="price" type="number" required></input>
+        <label for="stockoption">Crypto</label>
+        <select id="chooseStock" name="stockoption"></select>
 
-          <label for="amount">Amount</label>
-          <input id="stockAmount" name="amount" type="number" required></input>
+        <label for="price">Price</label>
+        <input id="stockPrice" name="price" type="number" value="0.00" required></input>
 
-          <label for="taxes">Tax </label>
-          <input id="stockTax" name="taxes" type="number" ></input>
+        <label for="amount">Amount</label>
+        <input id="stockAmount" name="amount" type="number" value="0.00" required></input>
 
-          <label for="date">Date</label>
-          <input id="stockDate" name="date" type="date" required></input><br>          
-        </form>
-        <button id="stockinsert"   name="buy">INSERT</input></button>
+        <label for="taxes">Tax </label>
+        <input id="stockTax" name="taxes" type="number" value="0.00"></input>
+
+        <label for="date">Date</label>
+        <input id="stockDate" name="date" type="date" required></input><br>
+      </form>
+      <button id="stockinsert" name="buy">INSERT</input></button>
     </div>
   </div>
   <hr>
   <footer>Copright &copy; </footer>
 
-  </body>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript"></script>
+</body>
 
 </html>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

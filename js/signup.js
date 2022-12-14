@@ -23,6 +23,8 @@ function userRegister(){
         data: newUser
     }).then((response) => {
         console.log(response.data)
+        location.href = "portfolio.html";
+   
     }).catch((error) => {console.log(error)});
 }
 
