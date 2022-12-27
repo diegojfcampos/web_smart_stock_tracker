@@ -2,13 +2,22 @@
 axios.defaults.baseURL = "http://localhost:8000/api";
 
 
+let passwordLogin = document.getElementById("passwordLogin");
+
 const btnLogin = document.getElementById("btnLogin");
 btnLogin.addEventListener('click', userLogin);
+
+passwordLogin.addEventListener('keypress', function(e){
+    if(e.key == 'Enter'){        
+        btnLogin.click();
+    }
+});
 
 function userLogin() {
 
     const userEmail = document.getElementById("emailLogin").value.trim();
     const userPassworld = document.getElementById("passwordLogin").value.trim();
+    let lblLoginStatus = document.getElementById("loginStatus");
 
     const user = {
         email: userEmail,
@@ -26,10 +35,13 @@ function userLogin() {
         localStorage.token = data.token;
         localStorage.id = id;
         location.href = "portfolio.html";
-
-
-    }).catch((error) => { console.log(error) });
-
+        
+    }).catch((error) => {
+        document.getElementById("loginStatus").innerHTML = "Email or password invalid!";
+        document.getElementById("emailLogin").value = "";
+        document.getElementById("passwordLogin").value = "";
+              
+        console.log(error) });
 }
 
 let cancelBtn = document.getElementById("cancelSginin");
@@ -38,3 +50,5 @@ cancelBtn.addEventListener("click", refreshPage)
 function refreshPage() {
     location.href = "signin.html"
 }
+
+

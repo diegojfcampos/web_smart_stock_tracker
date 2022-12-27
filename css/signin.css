@@ -57,6 +57,11 @@ form {
 
     
   }
+
+  #loginStatus{
+    display: flex;
+    justify-content: center;
+  }
   
   /* The "Forgot password" text */
   span.psw {

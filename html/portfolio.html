@@ -13,6 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="../js/portfolio.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <title>Smart Stock Track</title>
 </head>
@@ -34,26 +35,45 @@
       </div>
     </nav>
   </header>
-  <main>
+  <main>  
+
     <section class="portfolioSection">
-      <div id="currentAmount"> DIV 1 TEST</div>
-      <div id="totalInvested">DIV 2 TEST</div>
-      <div id="totalTaxes">DIV 3 TEST</div>
-      <div id="resultSpot">DIV 4 TEST</div>
-      <div id="totalStackeing">DIV 5 TEST</div>
-      <div id="totalEarnedStacking">DIV 6 TEST</div>
-      <div><button id="btnShowModal">Insert Stock</button></div>
+      <div id="totalInvested"> 
+        <p>Total Invested</p>
+
+      </div>
+      <div id="currentAmount">Current Amount</div>
+      <div id="totalTaxes">
+        <p>Total Taxes</p>
+
+      </div>
+      <div id="resultSpot">Result</div>
+      <div id="totalStacking">Total Stacking</div>
+      <div id="totalEarnedStacking">Earned Stacking</div>
+      <div><button id="btnShowModalInsert">Insert Stock</button></div>
     </section>
 
     <div >
       <canvas id="lineChart"  height="100px"></canvas>
     </div>
 
-    <h2>Stock Wallet</h2>
+    
+    <div class="tableButtons">
+      <h2>Stock Wallet</h2>
+      <button id="btnShowModalInsert1">Insert Stock</button>
+    </div>
     <section class="homeTable">
       <table id="walletTable" class="table"></table>
     </section>
 
+    <div class="tableButtons">
+      <h2>Stack Wallet</h2>
+      <button id="btnShowModalInsertStack">Insert Stack</button>
+    </div>
+    
+    <section class="containerTableStack">
+      <table id="stackTable" class="table"></table>
+    </section>
 
   </main>
 
@@ -72,19 +92,60 @@
         <label for="stockoption">Crypto</label>
         <select id="chooseStock" name="stockoption"></select>
 
-        <label for="price">Price</label>
+        <label for="price">Price for Coin</label>
         <input id="stockPrice" name="price" type="number" value="0.00" required></input>
 
-        <label for="amount">Amount</label>
-        <input id="stockAmount" name="amount" type="number" value="0.00" required></input>
+        <label for="amount">Quantity</label>
+        <input id="stockAmount" name="amount" type="number" value="0.00" required></input>        
 
         <label for="taxes">Tax </label>
         <input id="stockTax" name="taxes" type="number" value="0.00"></input>
 
         <label for="date">Date</label>
         <input id="stockDate" name="date" type="date" required></input><br>
+        
+        <label for="total"> Total</label>
+        <input id="stockAmount" name="amount" type="number" value="0.00" disabled=""></input>
+
       </form>
       <button id="stockinsert" name="buy">INSERT</input></button>
+    </div>
+  </div>
+  <hr>
+  
+  <div class="modal-conteiner" id="modal-conteinerStack">
+    <div class="modal-content">
+      <button id="close">x</button>
+      <h1>Insert Stack</h1>
+      <form>
+        <label for="currency">Currency</label>
+        <select id="stackCurrency" name="currency">
+          <option value="USD" selected>USD</option>
+          <option value="EUR">EUR</option>
+          <option value="BTC">BTC</option>
+        </select>
+
+        <label for="stackoption">Crypto</label>
+        <select id="stackoption" name="stackoption"></select>
+
+        <label for="stackQuantitie">Quantity</label>
+        <input id="stackQuantitie" name="stackQuantitie" type="number" value="0.00" required></input>        
+
+        <label for="stacktotalDays"> Total Day</label>
+        <input id="stacktotalDays" name="stacktotalDays" type="number" value="000" d></input>
+
+        <label for="stackRate">Stack Rate  </label>
+        <input id="stackRate" name="stackRate" type="number" placeholder="% Per Year"></input>
+       
+
+        <label for="dateRescue">Rescue's Date</label>
+        <input id="dateRescue" name="dateRescue" type="date" required></input><br>
+        
+        <label for="stackTotalEarned"> Total Earner</label>
+        <input id="stackTotalEarned" name="stackTotalEarned" type="number" value="0.00" disabled=""></input>
+
+      </form>
+      <button id="stackinsert" name="stack">INSERT</input></button>
     </div>
   </div>
   <hr>
@@ -94,4 +155,3 @@
 
 </html>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

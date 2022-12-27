@@ -33,16 +33,18 @@
   <form>
 
     <div class="container">
-      <label for="uname"><b>Username</b></label>
+      <label for="userEmail"><b>Username</b></label>
       <input id = "userEmail" type="text" placeholder="Enter Username" name="uname" required>
   
-      <label for="psw"><b>Password</b></label>
+      <label for="userPassword"><b>Password</b></label>
       <input id = "userPassword" type="password" placeholder="Enter Password" name="psw" required>
 
-      <label for="psw"><b>Confirm Password</b></label>
+      <label for="userCheckpassword"><b>Confirm Password</b></label>
       <input id= "userCheckpassword" type="password" placeholder="Enter Password" name="psw" required>
   
       <button id="btnRegister" type="button">Register</button>
+      <label id="loginStatus"></label>
+      <br>
       <label>
         <input type="checkbox" checked="checked" name="remember"> Remember me
       </label>

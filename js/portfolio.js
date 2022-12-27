@@ -2,6 +2,57 @@ axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
 axios.defaults.baseURL = "http://localhost:8000/api";
 
 
+function totalInvested(){
+  let id = localStorage.getItem("id"); 
+
+  axios({
+      method: "post",
+      url: "/wallet/totalinvested",    
+      data: {id}
+  }).then(response =>{
+    let data = response.data;
+    console.log("Total invested" + data)
+    addTotalInvested(data);
+    return data
+  }).catch((error) => { console.log(error) });
+
+}
+totalInvested();
+
+function addTotalInvested(totalInvested){
+  var divTotalInvested = document.getElementById("totalInvested");
+  var totalText = document.createTextNode(totalInvested);
+  divTotalInvested.setAttribute("class", "walletSummary");
+  divTotalInvested.appendChild(totalText);
+}
+
+//Calculating total taxes paied
+function totalTax(){
+  let id = localStorage.getItem("id"); 
+
+  axios({
+      method: "post",
+      url: "/wallet/totaltax",    
+      data: {id}
+  }).then(response =>{
+    let data = response.data;    
+    //Callinf function to add inf into portfolio.html
+    addTotalTax(data);
+    return data;
+  }).catch((error) => { console.log(error) });
+
+}
+totalTax();
+
+function addTotalTax(totalTax){
+  var divTotal = document.getElementById("totalTaxes");
+  var totalText = document.createTextNode(totalTax);
+  divTotal.setAttribute("class", "walletSummary");
+  divTotal.appendChild(totalText);
+}
+
+
+
 /*
 
 Creating Wallet Table to display wallet
@@ -13,6 +64,7 @@ Creating Wallet Table to display wallet
 function getWallet() {
 
   let id = localStorage.getItem("id");
+  
   axios({
       method: "post",
       url: "http://localhost:8000/api/wallet/getwallet",
@@ -20,6 +72,7 @@ function getWallet() {
   }).then(response => {
       let data = response.data;
       console.log(data)
+      console.log("test")
       createWalletTable(data);
   }).catch((error) => { console.log(error) });
 }
@@ -65,6 +118,8 @@ function createWalletTable(data){
   walletTable.appendChild(tbody);
 }
 
+getWallet() 
+
 //Function to  create tables cells and turning clearer the code.
 function createCel(tag, text) {
 
@@ -73,33 +128,67 @@ function createCel(tag, text) {
   return cel;  
 }
 
-getWallet() 
-
 /*
 
 Creating Line Chart to display Wallter's graph data
 
 */
 
-var ctx = document.getElementById("lineChart")
-var lineChart = new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
+function getData() {
+
+  let id = localStorage.getItem("id");
+  axios({
+      method: "post",
+      url: "http://localhost:8000/api/wallet/getwallet",
+      data: {id}
+  }).then(response => {
+      let data = response.data;
+      var newdata = []
+      console.log("Testing new data")
+      console.log(newdata)
+      
+      for (var i = 0; i < data.length; i++) {                
+        newdata.push(data[i].amount)
+        
+               
       }
+      
+     
+      createLineChart(newdata)
+
+      
+  }).catch((error) => { console.log(error) });
+}
+
+function createLineChart(data){
+  var ctx = document.getElementById("lineChart")
+  
+  var lineChart = new Chart(ctx, {
+  
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Fev', 'Mar', 'Apr', 'Jun', 'Jul', 'Ago','Sep','Oct','Nov','Dec'],
+      datasets: [{
+        label: 'Wallet Datas',
+        data: data,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      },
+      responsive: true,
+      
     }
-  }
-});
+  });
+}
+getData()
+
+
+
 
 
 /*
@@ -108,8 +197,15 @@ Creating Modal to insert stocks
 
 */
 
-let btnModal = document.getElementById("btnShowModal")
-btnModal.addEventListener("click", showModal);
+let btnModaInsert = document.getElementById("btnShowModalInsert")
+btnModaInsert.addEventListener("click", showModal);
+
+let btnModaInsert1 = document.getElementById("btnShowModalInsert1")
+btnModaInsert1.addEventListener("click", showModal);
+
+let btnShowModalInsertStack = document.getElementById("btnShowModalInsertStack")
+btnShowModalInsertStack.addEventListener("click", showModal);
+
 
 function showModal() {
   let elementModal = document.getElementById("modal-conteiner");
@@ -152,7 +248,9 @@ const insert = document.getElementById("stockinsert");
 insert.addEventListener("click", stockInsert);
 
 function stockInsert() {
+  
   const objStock = {
+    id: localStorage.getItem("id"),
     currency: document.getElementById("stockCurrency").value,
     name: document.getElementById("chooseStock").value,
     value: document.getElementById("stockPrice").value.trim(),
@@ -161,22 +259,64 @@ function stockInsert() {
     date: document.getElementById("stockDate").value.trim()
   }
 
-  let id = localStorage.getItem("id");
   axios({
     method: "post",
-    url: `/wallet/${id}/buy`,
+    url: `/wallet/buy`,
     data: objStock
   }).then(response => {
-    console.log('Success! Stock added')
-    cleanFields;
-    location.href = "portfolio.html";
+      console.log('Success! Stock added')
+      closeModal();
+      cleanFields;
+      location.href = "portfolio.html";
   }).catch((error) => {
-    console.log('Failed')
+      console.log('Failed')
   })
 
 }
 
 getCryptoData();
+
+
+/*
+
+Creating Modal to insert STACK
+
+*/
+/*
+const insertStack = document.getElementById("stackinsert");
+insert.addEventListener("click", stackInsert);
+
+function stockInsert() {
+  
+  const objStack = {
+    id: localStorage.getItem("id"),
+    currency: document.getElementById("stackCurrency").value,
+    name: document.getElementById("stackoption").value,    
+    quantitie: document.getElementById("stackQuantitie").value.trim(),
+    totalDays: document.getElementById("stacktotalDays").value.trim(),
+    rate: document.getElementById("stackRate").value.trim(),    
+    rescueDate: document.getElementById("dateRescue").value.trim(),
+   
+  }
+
+  axios({
+    method: "post",
+    url: `/wallet/insert`,
+    data: objStack
+  }).then(response => {
+      console.log('Success! Stack added')
+      closeModal();
+      cleanFields;
+      location.href = "portfolio.html";
+  }).catch((error) => {
+      console.log('Failed')
+  })
+
+}
+
+
+*/
+
 
 /*
 

@@ -22,10 +22,19 @@ function userRegister(){
         url: "/userauth/register",
         data: newUser
     }).then((response) => {
+        const data = response.data;
+        const id = data.user._id;
+        
+        localStorage.token = data.token;
+        localStorage.id = id;
+        location.href = "portfolio.html";
         console.log(response.data)
         location.href = "portfolio.html";
    
-    }).catch((error) => {console.log(error)});
+    }).catch((error) => {
+        document.getElementById("loginStatus").innerHTML = "Email or password invalid!";
+        document.getElementById("userCheckpassword").value = "";
+        console.log(error)});
 }
 
 let cancelBtn = document.getElementById("cancelSignup");
