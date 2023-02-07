@@ -74,8 +74,7 @@ button {
 .portfolioSection div{
   display: flex;
   width: 14%;
-  align-items: center;
-  
+  align-items: center;  
 }
 
 .title{
