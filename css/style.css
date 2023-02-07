@@ -69,17 +69,14 @@ button {
   justify-content: space-between;  
   text-align: center;
   margin-left: 4%;  
+  font-size: 1.2em;
+  font-weight: bold;
  
 }
 .portfolioSection div{
   display: flex;
   width: 14%;
   align-items: center;  
-}
-
-.Title{
-  font-size: 1.2em;
-  font-weight: bold;
 }
 
 .portfolioCard div{
