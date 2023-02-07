@@ -72,11 +72,17 @@ button {
  
 }
 .portfolioSection div{
-  border: solid #222;
+  display: flex;
   width: 14%;
   align-items: center;
   
 }
+
+.title{
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
 .portfolioCard div{
   height: 50px;
   width: 50px;
