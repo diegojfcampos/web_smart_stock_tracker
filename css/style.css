@@ -21,6 +21,7 @@ footer {
   width: 100%;
   
 }
+
 .container-fluid{
   color: #222;
   height: 75px;
@@ -170,4 +171,10 @@ button {
   justify-content: space-between;
   align-items: center;
   padding: 5px;
+}
+
+@media only screen(max-width:600px){
+  #navContainer{
+    height: 400px;
+  }
 }

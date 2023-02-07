@@ -1,5 +1,5 @@
 axios.defaults.headers.common['Authorization'] = 'Bearer' + localStorage.token;
-axios.defaults.baseURL = "http://localhost:8000/api";
+axios.defaults.baseURL = "https://api-smart-stock-tracker.vercel.app/api";
 
 
 const btnRegister = document.getElementById("btnRegister");
